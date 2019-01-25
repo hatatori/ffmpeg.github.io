@@ -1,0 +1,299 @@
+<style>
+*{
+	font-family: ubuntu;
+	outline: none;
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background-color: #242424;
+	color:#63636b;
+	font-size: 17;
+	outline: none;
+}
+
+.c1{color:orangered;}
+.c2{color:#80c0f0;}
+.c3{color:#99cc00;}
+.c4{color:yellow}
+.c6{color: #63636b;display: block;padding: 10}
+.comentarios{color:rgba(255,255,255,0.5);}
+
+#geral{
+	margin: 30 auto;
+	padding: 20;
+	width: 60%;
+	/*box-shadow: 0px 0px 10px #111;*/
+	background: #000;
+
+}
+
+.code{padding: 10;background: #111; margin: 30; text-align:  }
+
+.amostra{
+	background-color: #111;
+	padding: 10;
+	/*border:10px solid green;*/
+}
+
+
+
+button{padding: 10;color:#63636b; border:none;}
+
+.exemplos{background-color: 0; padding: 10;text-align: center;margin-bottom: 10;border:1px solid #002500;}
+
+/*efeitos*/
+
+#cortarTamanho{
+	margin: auto;
+	width: 600;
+	height: 433;
+	background:url(imgs/park.jpg);
+	position: relative;
+	background-size: 100%;
+	overflow: hidden;
+
+}
+
+#cortarTamanho div:nth-child(1){
+	width: 200;
+	height: 100;
+	left: 100;
+	top: 100;
+	background-color: rgba(0,0,0,0.5);
+	border:2px solid red;
+	position: absolute;
+}
+
+#cortarTamanho div:nth-child(1)::before{
+	content: '';
+	width: 10;
+	height: 10;
+	border-radius: 10px;
+	background: yellow;
+	position: absolute;
+	left: -5;
+	top: -5
+}
+
+#cortarTamanho div p:nth-child(1){position: absolute;left:-3;top: 40;transform: rotate(90deg);width: 30;color:white;}
+#cortarTamanho div p:nth-child(2){position: absolute;left:80;top: 0;width: 30;color:white;}
+
+#cortarTamanho div p:nth-child(3){
+	color: white;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100;
+	height: 20;
+
+}
+
+
+
+</style>
+
+<pre id='com' class="comentarios" contenteditable spellcheck="false" style="display: none">
+	recorte tempo
+
+	ffmpeg -i [inputfile] -ss 00:41 -t 00:10 -async 1 [outputfile]
+
+	mater qualidade
+
+	para mp4 ultiliza o -crf
+
+	ffmpeg -i [inputfile] -crf 10 [outputfile]
+
+	compilação de qualidade o quanto maior mais maneiro
+	para mp4 ultiliza o -avi
+
+	ffmpeg -i [inputfile] -q 23 [outputfile]
+
+	qualidade e tempo
+
+	ffmpeg -i [inputfile] -ss 00:41 -t 00:10 -async 1 -crf 23 out3.mkv
+
+	qualidade de audio
+
+	ffmpeg -i [inputfile] -b:a 320k [outputfile]
+
+	to target the video
+
+	ffmpeg -i [inputfile] -b:1000k [outputfile]
+
+	aumenta diminui volume
+
+	ffmpeg -i [inputfile] -filter:a "volume=2" [outputfile]
+	ffmpeg -i [inputfile] -filter:a "channelmap=0-0|0-1" [outputfile]
+
+	cotar
+
+	ffmpeg -i [inputfile] -filter:v "crop=w=640:h=480:x=100:y=100" [outputfile]
+
+	tamanho scale
+
+	ffmpeg -i [inputfile] -filter:v "scale=w=200:h=-1" [outputfile]	
+	ffmpeg -i out3.mkv -filter:v "scale=w=200:h=-1" outout.mp4
+
+
+	rotacionar
+
+	1 = 90 graus
+	ffmpeg -i out3.mkv -vf "transpose=1" rotate.mp4
+
+	// pi em radiano
+	ffmpeg -i [input] -filter:v "rotate=30*PI/180" [output]
+
+</pre>
+
+<div id="geral">
+
+	<p>Conversão simples</p>
+
+	<div class="code">
+		ffmpeg -i [input] [saida]
+	</div>
+
+	Recorte de tempo 
+
+	<div class="code">
+		//copia 30s a partir do segundo 10<br>
+		ffmpeg -i [inputfile] -ss 00:10 -t 00:30 [outputfile]<br>
+		<br>
+	</div>
+
+
+	mp4 qualidade [ 0 = ótimo , 20 padrão , 100 = ruim]
+	
+
+
+	<div class="code">
+		ffmpeg -i [inputfile] -crf 16 [outputfile]
+	</div>
+
+	<div class="exemplos">
+		<a href='videos/render15.mp4' target="_blank"><button>15 - 6.03mb</button></a> 
+		<a href='videos/render20.mp4' target="_blank"><button>20 - 4.83 mb</button></a>
+		<a href='videos/render30.mp4' target="_blank"><button>30 - 1.41 mb</button></a>
+		<a href='videos/render100.mp4' target="_blank"><button>100 - 327 kb</button></a>
+	</div>
+	
+	
+
+
+	Qualidade de áudio [ 320k , 256k , 128k ]
+
+	<div class="code">
+		ffmpeg -i [inputfile] -b:a 320k [outputfile]
+	</div>
+
+	Vídeo bitrate
+	<div class="code">
+		ffmpeg -i [inputfile] -b:1000k [outputfile]
+	</div>
+
+
+	Volume + ou - / Canais
+	<div class="code">
+		ffmpeg -i [inputfile] -filter:a "volume=2" [outputfile]<br><br>
+		ffmpeg -i [inputfile] -filter:a "channelmap=0-0|0-1" [outputfile]
+	</div>
+
+	Cortar [w:h:x:y] 
+	<div class="code">
+		ffmpeg -i [inputfile] -filter:v "crop=w=100:h=200:x=100:y=100" [outputfile]
+	</div>
+
+	<div class="exemplos">
+		<div id="cortarTamanho">
+			<div>
+				<p>100</p>
+				<p>200</p>
+				<p id="coordenadas">( 100 , 100 )</p>
+			</div>
+		</div>
+	</div>
+
+
+
+	Tamanho [w:h] [ -1 para mater proporção]
+	<div class="code">
+		in_w = largura<br>
+		in_h = altura<br><br>
+
+		ffmpeg -i [input] -filter:v "scale=200:300" [output]<br>
+		ffmpeg -i [input] -filter:v "scale=200:-1" [output]<br>
+
+	</div>
+	<div class="exemplos">
+		<img src='imgs/park.jpg' > - <img src='imgs/park.jpg' width="200" height="100">
+	</div>
+
+	Rotação [ 1=90 , 2=180 , 3=270 , 4=360 ] [ angulo*PI/180 ]
+	<div class="code">
+		ffmpeg -i out3.mkv -vf "transpose=1" rotate.mp4<Br><br>
+		ffmpeg -i [input] -filter:v "rotate=30*PI/180" [output]
+	</div>
+
+	<div class="exemplos">
+		<input type="range" id='ran' min=0 max=360 value=30><br><br>
+		<span>ffmpeg -i [input] -filter:v "rotate=<span id="ang">30</span>*PI/180" [output]</span><br><br>
+		<img id=imrot src='imgs/park.jpg' width="200">
+	</div>
+
+
+	<script>
+
+	// ok.innerHTML = com.innerText.replace(/\n/g,"<br>")
+
+	code = document.getElementsByClassName("code")
+
+	for(i=0;i<code.length;i++){
+		render(code[i])
+	}
+	
+	function render(val){
+		k = /\w+\.(avi|jpg|png|webm|flv|mp4|bmp|mpg)/g
+		k = /\[.+?\]/g
+		k2 = /\".+(\d+)?\"/g
+		k3 = / -\w+/g
+		k4 = /\/\/.*/g
+		k5 = /\"(.+)?\"/g
+		k6 = /\/\/.+/g
+
+		// k2 = /\d+:\d+\d:\d+.\d+|\d+\:(\d+|-)\d+/g
+
+
+
+		val.innerHTML = val.innerText.replace(k,"<span class=c1>$&</span>").replace(k2,"<span class=c2>$&</span>").replace(k3,"<span class=c3>$&</span>").replace(k5,"<span class=c5>$&</span>").replace(k6,"<span class=c6>$&</span>").replace(/\n/g,"<br>")
+
+	}
+
+
+</script>
+
+<script src='drag.js'></script>
+
+<script>
+	//efeitos
+	window.onmousemove=function(e){
+
+		cx = parseInt(cortarTamanho.children[0].style.left)
+		cy = parseInt(cortarTamanho.children[0].style.top)
+
+		
+		coordenadas.innerHTML = "( "+cx+" , "+cy+" )"
+	}
+
+	ran.onmousemove=function(){
+		
+		ang.innerHTML = this.value
+		
+		imrot.style.transform = "rotate("+(this.value)+"deg)"
+
+	}
+</script>
