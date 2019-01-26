@@ -7,8 +7,8 @@
 }
 
 body{
-	background-color: #242424;
-	color:#63636b;
+	background-color: #393634;
+	color: #6B6461;
 	font-size: 17;
 	outline: none;
 }
@@ -23,25 +23,70 @@ body{
 #geral{
 	margin: 30 auto;
 	padding: 20;
-	width: 60%;
+	width: 1200;
 	/*box-shadow: 0px 0px 10px #111;*/
-	background: #000;
-
+	/*background: #202020;*/
 }
 
-.code{padding: 10;background: #111; margin: 30; text-align:  }
+#geral > div{
+	background-color: #202020;
+	padding: 10;
+	margin: 10;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+	transition: 0.2s;
+	
+}
+
+#geral > div:hover{
+	background-color: #151515;
+	transition: 0.2s;
+	
+}
+
+
+.code{padding: 10; margin: 30;  
+	/*background: #312E2C*/
+}
 
 .amostra{
-	background-color: #111;
+	/*background-color: #111;*/
 	padding: 10;
-	/*border:10px solid green;*/
+	
 }
 
+.tolltip{display: inline-block;position: relative;}
+
+.tolltip p{
+	text-align: center;
+	position: absolute;
+	top: -23;
+	right:0;
+	left: 0;
+	width: 100;
+	margin:auto;
+	font-size: 12;
+	opacity: 0.0;
+	transition: 0.2s;
+	padding: 5;
+	border:none;
+	background-color: #3F3B37;color:white;
+}
+.tolltip:hover p{
+	opacity: 1;
+	transition: 0.2s;
+}
+
+button{padding: 10;border:none;background-color: #3F3B37;color:white;}
+
+.bt{padding: 10;border:none;background-color: #3F3B37;color:white;}
 
 
-button{padding: 10;color:#63636b; border:none;}
-
-.exemplos{background-color: 0; padding: 10;text-align: center;margin-bottom: 10;border:1px solid #002500;}
+/*.exemplos{background-color: #312E2C; margin:30 0; ;padding: 10;text-align: center;}*/
+.exemplos{
+	display: block;
+	/*margin: 10;*/
+	/*border: 1px solid #615E5A*/
+}
 
 /*efeitos*/
 
@@ -53,7 +98,6 @@ button{padding: 10;color:#63636b; border:none;}
 	position: relative;
 	background-size: 100%;
 	overflow: hidden;
-
 }
 
 #cortarTamanho div:nth-child(1){
@@ -65,6 +109,10 @@ button{padding: 10;color:#63636b; border:none;}
 	border:2px solid red;
 	position: absolute;
 }
+
+#cortarTamanho div:hover{cursor: grab}
+
+
 
 #cortarTamanho div:nth-child(1)::before{
 	content: '';
@@ -152,101 +200,158 @@ button{padding: 10;color:#63636b; border:none;}
 
 <div id="geral">
 
-	<p>Conversão simples</p>
+	<div>
+		<p>Conversão simples</p>
 
-	<div class="code">
-		ffmpeg -i [input] [saida]
+		<div class="code">
+			ffmpeg -i [input] [saida]
+		</div>
 	</div>
 
-	Recorte de tempo 
+	<div>
+		Recorte de tempo 
 
-	<div class="code">
-		//copia 30s a partir do segundo 10<br>
-		ffmpeg -i [inputfile] -ss 00:10 -t 00:30 [outputfile]<br>
-		<br>
+		<div class="code">
+			//copia 30s a partir do segundo 10<br>
+			ffmpeg -i [inputfile] -ss 00:10 -t 00:30 [outputfile]<br>
+			<br>
+		</div>
 	</div>
 
+	<div>
+		mp4 qualidade [ 0 = ótimo , 20 padrão , 100 = ruim]
 
-	mp4 qualidade [ 0 = ótimo , 20 padrão , 100 = ruim]
-	
+		<div class="code">
+			ffmpeg -i [inputfile] -crf 16 [outputfile]
+		</div>
 
-
-	<div class="code">
-		ffmpeg -i [inputfile] -crf 16 [outputfile]
+		<div class="exemplos">
+			<a href='videos/render15.mp4' target="_blank"><button>15 - 6.03mb</button></a> 
+			<a href='videos/render20.mp4' target="_blank"><button>20 - 4.83 mb</button></a>
+			<a href='videos/render30.mp4' target="_blank"><button>30 - 1.41 mb</button></a>
+			<a href='videos/render100.mp4' target="_blank"><button>100 - 327 kb</button></a>
+		</div>
 	</div>
 
-	<div class="exemplos">
-		<a href='videos/render15.mp4' target="_blank"><button>15 - 6.03mb</button></a> 
-		<a href='videos/render20.mp4' target="_blank"><button>20 - 4.83 mb</button></a>
-		<a href='videos/render30.mp4' target="_blank"><button>30 - 1.41 mb</button></a>
-		<a href='videos/render100.mp4' target="_blank"><button>100 - 327 kb</button></a>
-	</div>
-	
-	
+	<div>
+		Qualidade de áudio [ 320k , 256k , 128k ]
 
-
-	Qualidade de áudio [ 320k , 256k , 128k ]
-
-	<div class="code">
-		ffmpeg -i [inputfile] -b:a 320k [outputfile]
+		<div class="code">
+			ffmpeg -i [inputfile] -b:a 320k [outputfile]
+		</div>
 	</div>
 
-	Vídeo bitrate
-	<div class="code">
-		ffmpeg -i [inputfile] -b:1000k [outputfile]
+	<div>
+		Vídeo bitrate
+		<div class="code">
+			ffmpeg -i [inputfile] -b:1000k [outputfile]
+		</div>
 	</div>
 
+	<div>
+		Volume + ou - / Canais
+		<div class="code">
+			ffmpeg -i [inputfile] -filter:a "volume=2" [outputfile]<br><br>
+			ffmpeg -i [inputfile] -filter:a "channelmap=0-0|0-1" [outputfile]
+		</div>
 
-	Volume + ou - / Canais
-	<div class="code">
-		ffmpeg -i [inputfile] -filter:a "volume=2" [outputfile]<br><br>
-		ffmpeg -i [inputfile] -filter:a "channelmap=0-0|0-1" [outputfile]
-	</div>
-
-	Cortar [w:h:x:y] 
-	<div class="code">
-		ffmpeg -i [inputfile] -filter:v "crop=w=100:h=200:x=100:y=100" [outputfile]
-	</div>
-
-	<div class="exemplos">
-		<div id="cortarTamanho">
-			<div>
-				<p>100</p>
-				<p>200</p>
-				<p id="coordenadas">( 100 , 100 )</p>
-			</div>
+		<div class="tolltip"><p>Volume 1</p><img src="imgs/vol1.png">
+		</div>
+		<div class="tolltip"><p>Volume 2</p><img src="imgs/vol2.png">
 		</div>
 	</div>
 
 
 
-	Tamanho [w:h] [ -1 para mater proporção]
-	<div class="code">
-		in_w = largura<br>
-		in_h = altura<br><br>
+	<div>
+		Cortar [w:h:x:y] 
+		<div class="code">
+			ffmpeg -i [inputfile] -filter:v "crop=w=100:h=200:x=100:y=100" [outputfile]<br><br>
+			ffmpeg -i [inputfile] -filter:v "crop=200:100:100:100" [outputfile]
+		</div>
 
-		ffmpeg -i [input] -filter:v "scale=200:300" [output]<br>
-		ffmpeg -i [input] -filter:v "scale=200:-1" [output]<br>
+		<div class="exemplos">
+			<div id="cortarTamanho">
+				<div>
+					<p>100</p>
+					<p>200</p>
+					<p id="coordenadas">( 100 , 100 )</p>
+				</div>
+			</div>
+		</div>
 
-	</div>
-	<div class="exemplos">
-		<img src='imgs/park.jpg' > - <img src='imgs/park.jpg' width="200" height="100">
-	</div>
-
-	Rotação [ 1=90 , 2=180 , 3=270 , 4=360 ] [ angulo*PI/180 ]
-	<div class="code">
-		ffmpeg -i out3.mkv -vf "transpose=1" rotate.mp4<Br><br>
-		ffmpeg -i [input] -filter:v "rotate=30*PI/180" [output]
-	</div>
-
-	<div class="exemplos">
-		<input type="range" id='ran' min=0 max=360 value=30><br><br>
-		<span>ffmpeg -i [input] -filter:v "rotate=<span id="ang">30</span>*PI/180" [output]</span><br><br>
-		<img id=imrot src='imgs/park.jpg' width="200">
 	</div>
 
 
-	<script>
+	<div>
+		Tamanho [w:h] [ -1 para mater proporção]
+		<div class="code">
+			in_w = largura<br>
+			in_h = altura<br><br>
+
+			ffmpeg -i [input] -filter:v "scale=200:300" [output]<br>
+			ffmpeg -i [input] -filter:v "scale=200:-1" [output]<br>
+
+		</div>
+
+		<a href="/images/myw3schoolsimage.jpg" download="w3logo">
+			<img src="/images/myw3schoolsimage.jpg" alt="W3Schools" width="104" height="142">
+		</a>
+
+		<div class="exemplos">
+			<img src='imgs/park.jpg' > - <img src='imgs/park.jpg' width="200" height="300">
+		</div>
+
+	</div>
+
+	<div>
+		Rotação 
+		<div class="code">
+			ffmpeg -i [input] -vf "transpose=1" [output]<Br><br>
+			ffmpeg -i [input] -filter:v "rotate=30*PI/180" [output]
+		</div>
+
+		<div>
+			<div class="exemplos">
+				<input type="range" id='ran' min=0 max=360 value=30><br><br>
+				<span>ffmpeg -i [input] -filter:v "rotate=<span id="ang">30</span>*PI/180" [output]</span><br><br>
+				<img id=imrot src='imgs/park.jpg' width="200">
+			</div>
+		</div>
+	</div>
+
+	<div>
+		Juntar vídeos
+		<div class="code">
+			ffmpeg -f concat -i [input_list] [output]
+		</div>
+		<pre>
+			lista.txt
+
+			file 'video1.mp4'
+			file 'video2.mp4'
+			file 'video3.mp4'
+			...
+		</pre>
+	</div>
+
+	<div>
+		Convertendo pasta
+		<div class="code">
+			(for %i in (*.mp4) do @echo ffmpeg -i %i %i.mp3 )
+		</div>
+	</div>
+
+
+
+
+	<!-- (for %i in (pasta/*.mp4) do ffmpeg -i pasta/%i %i.mp3 ) -->
+	<!-- (for %i in (pasta/*.mp4) do ffmpeg -i pasta/%i %i.mp3 ) -->
+
+</div>
+
+
+<script>
 
 	// ok.innerHTML = com.innerText.replace(/\n/g,"<br>")
 
@@ -260,7 +365,7 @@ button{padding: 10;color:#63636b; border:none;}
 		k = /\w+\.(avi|jpg|png|webm|flv|mp4|bmp|mpg)/g
 		k = /\[.+?\]/g
 		k2 = /\".+(\d+)?\"/g
-		k3 = / -\w+/g
+		k3 = / -\w+|concat/g
 		k4 = /\/\/.*/g
 		k5 = /\"(.+)?\"/g
 		k6 = /\/\/.+/g
@@ -292,6 +397,8 @@ button{padding: 10;color:#63636b; border:none;}
 	ran.onmousemove=function(){
 		
 		ang.innerHTML = this.value
+		
+
 		
 		imrot.style.transform = "rotate("+(this.value)+"deg)"
 
