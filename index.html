@@ -34,14 +34,15 @@ body{
 	margin: 10;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 	transition: 0.2s;
-	
 }
 
 #geral > div:hover{
 	background-color: #151515;
 	transition: 0.2s;
-	
 }
+
+
+
 
 
 .code{padding: 10; margin: 30;   
@@ -76,6 +77,8 @@ body{
 	transition: 0.2s;
 }
 
+.tolltip:active p{opacity: 0; transition: 0.05s;}
+
 button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 
 .bt{padding: 10;border:none;background-color: #3F3B37;color:white;}
@@ -84,9 +87,10 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 /*.exemplos{background-color: #312E2C; margin:30 0; ;padding: 10;text-align: center;}*/
 .exemplos{
 	display: block;
-	/*margin: 10;*/
-	/*border: 1px solid #615E5A*/
+	margin: 10;
+
 }
+
 
 /*efeitos*/
 
@@ -141,7 +145,17 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 
 }
 
+.flip-horizontal{transition: 0.5s}
+.flip-horizontal:active{ transform: scaleX(-1); transition: 0.5s; }
 
+.flip-vertical{transition: 0.5s}
+.flip-vertical:active{ transform: scaleY(-1); transition: 0.5s; }
+
+.cscale{width: 300}
+.cscale img{width: 300; transition:0.5s;}
+.cscale:active img{width: 200;transition: 0.5s}
+
+hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1px}
 
 </style>
 
@@ -180,12 +194,12 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 
 	cotar
 
-	ffmpeg -i [inputfile] -filter:v "crop=w=640:h=480:x=100:y=100" [outputfile]
+	ffmpeg -i [inputfile] -vf "crop=w=640:h=480:x=100:y=100" [outputfile]
 
 	tamanho scale
 
-	ffmpeg -i [inputfile] -filter:v "scale=w=200:h=-1" [outputfile]	
-	ffmpeg -i out3.mkv -filter:v "scale=w=200:h=-1" outout.mp4
+	ffmpeg -i [inputfile] -vf "scale=w=200:h=-1" [outputfile]	
+	ffmpeg -i out3.mkv -vf "scale=w=200:h=-1" outout.mp4
 
 
 	rotacionar
@@ -194,7 +208,7 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 	ffmpeg -i out3.mkv -vf "transpose=1" rotate.mp4
 
 	// pi em radiano
-	ffmpeg -i [input] -filter:v "rotate=30*PI/180" [output]
+	ffmpeg -i [input] -vf "rotate=30*PI/180" [output]
 
 </pre>
 
@@ -254,10 +268,9 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 			ffmpeg -i [inputfile] -filter:a "volume=2" [outputfile]<br><br>
 			ffmpeg -i [inputfile] -filter:a "channelmap=0-0|0-1" [outputfile]
 		</div>
-
-		<div class="tolltip"><p>Volume 1</p><img src="imgs/vol1.png">
-		</div>
-		<div class="tolltip"><p>Volume 2</p><img src="imgs/vol2.png">
+		<div class="exemplos">
+			<div class="tolltip"><p>Volume 1</p><img src="imgs/vol1.png"></div>
+			<div class="tolltip"><p>Volume 2</p><img src="imgs/vol2.png"></div>
 		</div>
 	</div>
 
@@ -266,10 +279,10 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 	<div>
 		Cortar [w:h:x:y] 
 		<div class="code">
-			ffmpeg -i [inputfile] -filter:v "crop=w=100:h=200:x=100:y=100" [outputfile]<br><br>
-			ffmpeg -i [inputfile] -filter:v "crop=200:100:100:100" [outputfile]
+			ffmpeg -i [inputfile] -vf "crop=w=100:h=200:x=100:y=100" [outputfile]<br><br>
+			ffmpeg -i [inputfile] -vf "crop=200:100:100:100" [outputfile]
 		</div>
-
+		<hr>
 		<div class="exemplos">
 			<div id="cortarTamanho">
 				<div>
@@ -289,16 +302,14 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 			in_w = largura<br>
 			in_h = altura<br><br>
 
-			ffmpeg -i [input] -filter:v "scale=200:300" [output]<br>
-			ffmpeg -i [input] -filter:v "scale=200:-1" [output]<br>
+			ffmpeg -i [input] -vf "scale=200:300" [output]<br>
+			ffmpeg -i [input] -vf "scale=200:-1" [output]<br>
 
 		</div>
 
-		
+		<hr>		
 
-		<div class="exemplos">
-			<img src='imgs/park.jpg' > - <img src='imgs/park.jpg' width="200" height="300">
-		</div>
+		<div class="cscale exemplos tolltip"><p>click</p><img src='imgs/park.jpg' width="500"></div>
 
 	</div>
 
@@ -306,20 +317,34 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 		Rotação 
 		<div class="code">
 			ffmpeg -i [input] -vf "transpose=1" [output]<Br><br>
-			ffmpeg -i [input] -filter:v "rotate=30*PI/180" [output]
+			ffmpeg -i [input] -vf "rotate=30*-1*PI/180" [output]
 		</div>
-
+		<hr>
 		<div>
 			<div class="exemplos">
 				<input type="range" id='ran' min=0 max=360 value=30><br><br>
-				<span>ffmpeg -i [input] -filter:v "rotate=<span id="ang">30</span>*PI/180" [output]</span><br><br>
-				<img id=imrot src='imgs/park.jpg' width="200">
+				<span>ffmpeg -i [input] -vf "rotate=<span id="ang">30</span>*-1*PI/180" [output]</span><br><br>
+				<img style="transition: 0.5s;" id=imrot src='imgs/coruja3.jpg' width="200">
 			</div>
 		</div>
 	</div>
 
 	<div>
-		Juntar vídeos
+		Flip horizontal
+		<div class="code">ffmpeg -i [input] -vf vflip [output]</div>
+		<div class="exemplos">
+			<div class="tolltip flip-horizontal" style="width: 200"><p>Click</p><img src='imgs/coruja1.jpg' width="200"></div><br>
+		</div>
+		<hr>
+		Flip vertical 
+		<div class="code">ffmpeg -i [input] -vf vflip [output]</div>
+		<div class="exemplos">
+			<div class="tolltip flip-vertical" style="width: 200"><p>Click</p><img src='imgs/coruja2.jpg' width="200"></div><br>
+		</div>
+	</div>
+
+	<div>
+		Juntar vídeos em um só
 		<div class="code">
 			ffmpeg -f concat -i [input_list] [output]
 		</div>
@@ -341,23 +366,23 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 	</div>
 
 	<div>
-		Transformar Fotos em vídeo [ %03d = número ]
+		Transformar Fotos em vídeo [ %d = número | input em png é melhor ]
 		<div class="code">
-			ffmpeg -i [image-%03d.png] [output]
+			ffmpeg -i [output] [%d input]
 		</div>
 		Transformar vídeo em sequência fotos
 		<div class="code">
-			ffmpeg -i [image-%03d.png] [output]
+			ffmpeg -i [%d input] [output]
 		</div>
 		<div class="code">
-			ffmpeg -framerate 60 -i [image-%03d.png] [output]
+			ffmpeg -framerate 60 -i [%d input] [output]
 		</div>
 	</div>
 
 	<div>
 		Copia frame do tempo [ output %d ]
 		<div class="code">
-			ffmpeg -i v1.mp4 -ss 00:00:37.000 -vframes 3 [%d output]
+			ffmpeg -i [input] -ss 00:00:37 -vframes 3 [%d output]
 		</div>
 	</div>
 
@@ -383,7 +408,7 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 		k = /\w+\.(avi|jpg|png|webm|flv|mp4|bmp|mpg)/g
 		k = /\[.+?\]/g
 		k2 = /\".+(\d+)?\"/g
-		k3 = / -\w+|concat|\%03d/g
+		k3 = / -\w+|concat|\%d/g
 		k4 = /\/\/.*/g
 		k5 = /\"(.+)?\"/g
 		k6 = /\/\/.+/g
@@ -415,10 +440,8 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 	ran.onmousemove=function(){
 		
 		ang.innerHTML = this.value
-		
 
-		
-		imrot.style.transform = "rotate("+(this.value)+"deg)"
+		imrot.style.transform = "rotate("+(this.value*-1)+"deg)"
 
 	}
 </script>
