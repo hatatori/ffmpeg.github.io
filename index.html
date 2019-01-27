@@ -44,7 +44,7 @@ body{
 }
 
 
-.code{padding: 10; margin: 30;  
+.code{padding: 10; margin: 30;   
 	/*background: #312E2C*/
 }
 
@@ -294,9 +294,7 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 
 		</div>
 
-		<a href="/images/myw3schoolsimage.jpg" download="w3logo">
-			<img src="/images/myw3schoolsimage.jpg" alt="W3Schools" width="104" height="142">
-		</a>
+		
 
 		<div class="exemplos">
 			<img src='imgs/park.jpg' > - <img src='imgs/park.jpg' width="200" height="300">
@@ -342,6 +340,26 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 		</div>
 	</div>
 
+	<div>
+		Transformar Fotos em vídeo [ %03d = número ]
+		<div class="code">
+			ffmpeg -i [image-%03d.png] [output]
+		</div>
+		Transformar vídeo em sequência fotos
+		<div class="code">
+			ffmpeg -i [image-%03d.png] [output]
+		</div>
+		<div class="code">
+			ffmpeg -framerate 60 -i [image-%03d.png] [output]
+		</div>
+	</div>
+
+	<div>
+		Copia frame do tempo [ output %d ]
+		<div class="code">
+			ffmpeg -i v1.mp4 -ss 00:00:37.000 -vframes 3 [%d output]
+		</div>
+	</div>
 
 
 
@@ -365,7 +383,7 @@ button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 		k = /\w+\.(avi|jpg|png|webm|flv|mp4|bmp|mpg)/g
 		k = /\[.+?\]/g
 		k2 = /\".+(\d+)?\"/g
-		k3 = / -\w+|concat/g
+		k3 = / -\w+|concat|\%03d/g
 		k4 = /\/\/.*/g
 		k5 = /\"(.+)?\"/g
 		k6 = /\/\/.+/g
