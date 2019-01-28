@@ -13,6 +13,8 @@ body{
 	outline: none;
 }
 
+a{color: #ddd}
+
 .c1{color:orangered;}
 .c2{color:#80c0f0;}
 .c3{color:#99cc00;}
@@ -168,14 +170,16 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 	font-size: 15;
 	color:#908782
 
+
 }
 
 .comments:checked + *{
 	transition: 0.2s;
 	overflow: hidden;
 	margin: 10;
+	max-height: 1000%;
 	max-height: 100%;
-	padding: 10;
+	padding: 20 50;
 }
 
 .comments::before{
@@ -186,7 +190,16 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 }
 
 .comments:active::before{background-color: white;transition: 0.2s}
+#seqf *{padding: 0;margin: 0}
 
+#seqf{width: 500;height: 280;overflow:hidden;position: relative;}
+#seqf > img{
+	position: absolute;
+	width: auto;
+	height: auto;
+	top: 0;
+	left: 0;
+}
 
 </style>
 
@@ -262,11 +275,15 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 		Recorte de tempo 
 
 		<div class="code">
-			ffmpeg -i [inputfile] -ss 00:05 -t 00:10 [outputfile]
+			ffmpeg -i [inputfile] -ss 5 -t 10 [outputfile]
 		</div>
 		<input class="comments" type="checkbox">
 		<pre>
 			Copia 10s a partir do segundo 5
+
+			O formato do tempo pode ser retirado assim => 00:00:00.000
+
+			horas : minutos : segundos . milisegundos
 		</pre>
 		
 	</div>
@@ -284,9 +301,9 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 			<a href='videos/render30.mp4' target="_blank"><button>30 - 1.41 mb</button></a>
 			<a href='videos/render100.mp4' target="_blank"><button>100 - 327 kb</button></a>
 		</div>
-		<hr>
+		
 
-	
+
 
 	</div>
 
@@ -353,7 +370,8 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 
 		<hr>		
 
-		<div class="cscale exemplos tolltip"><p>click</p><img src='imgs/park.jpg' width="500"></div>
+		<div class="cscale exemplos tolltip"><p>click</p><img src='imgs/coruja5.jpg' width="500">
+		</div>
 
 	</div>
 
@@ -418,6 +436,22 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 		<div class="code">
 			ffmpeg -i [%d input] [output]
 		</div>
+
+		<div class="exemplos">
+			<input type="range" id="seqft" min=0 max=180 value=7 style="width: 300"><br><br>
+			<div id="seqf">
+				<img id=matriximg src="imgs/matrixirelia2.jpg">
+			</div>
+		</div>
+
+		<input type="checkbox" class="comments">
+		<div>
+			<a href="imgs/matrixirelia2.jpg" target="blank">link da foto</a><br><Br>
+			Pega todas as fotos de uma pasta com os nomes sequenciados 1,2,3... e transforma em um vídeo único: 
+		</div>
+
+
+
 		<div class="code">
 			ffmpeg -framerate 60 -i [%d input] [output]
 		</div>
@@ -430,7 +464,7 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 			ffmpeg -i [input] -ss 00:00:37 -vframes 3 [%d output]
 		</div>
 
-		
+
 
 	</div>
 
@@ -491,6 +525,21 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 
 		imrot.style.transform = "rotate("+(this.value*-1)+"deg)"
 
+	}
+
+	
+	seqft.onmousemove=function(){
+		v = parseInt(this.value)
+		if(v==180) v=179
+
+			x = v%6
+		y = parseInt(v/6)
+
+
+		console.log(x+" - "+y)
+		
+		matriximg.style.left = x*500*-1
+		matriximg.style.top = y*280*-1
 	}
 
 	
