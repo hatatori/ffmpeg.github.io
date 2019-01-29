@@ -374,175 +374,184 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 			</div>
 			<div class="audio">
 				<button>50</button title="1.29 mb">
-				<input type="radio" name='a'>
-				<audio src='audios/red50.mp3' controls=""></audio>
+					<input type="radio" name='a'>
+					<audio src='audios/red50.mp3' controls=""></audio>
+				</div>
+			</div>
+
+		</div>
+
+		<div>
+			Vídeo bitrate
+			<div class="code">
+				ffmpeg -i [input] -b:1000k [outputfile]
 			</div>
 		</div>
 
-	</div>
-
-	<div>
-		Vídeo bitrate
-		<div class="code">
-			ffmpeg -i [input] -b:1000k [outputfile]
-		</div>
-	</div>
-
-	<div>
-		Volume + ou - / Canais
-		<div class="code">
-			ffmpeg -i [input] -va "volume=2" [outputfile]<br><br>
-			ffmpeg -i [input] -va "channelmap=0-0|0-1" [outputfile]
-		</div>
-		<div class="exemplos">
-			<div class="tolltip"><p>Volume 1</p><img src="imgs/vol1.png"></div>
-			<div class="tolltip"><p>Volume 2</p><img src="imgs/vol2.png"></div>
-		</div>
-	</div>
-
-
-
-	<div>
-		Cortar [w:h:x:y] 
-		<div class="code">
-			ffmpeg -i [input] -vf "crop=w=100:h=90:x=100:y=100" [outputfile]<br><br>
-			ffmpeg -i [input] -vf "crop=200:90:100:100" [outputfile]
+		<div>
+			Volume + ou - / Canais
+			<div class="code">
+				ffmpeg -i [input] -va "volume=2" [outputfile]<br><br>
+				ffmpeg -i [input] -va "channelmap=0-0|0-1" [outputfile]
+			</div>
+			<div class="exemplos">
+				<div class="tolltip"><p>Volume 1</p><img src="imgs/vol1.png"></div>
+				<div class="tolltip"><p>Volume 2</p><img src="imgs/vol2.png"></div>
+			</div>
 		</div>
 
-		<hr>
-		<div class="exemplos">
-			<div id="cortarTamanho">
-				<div>
-					<p>90</p>
-					<p>200</p>
-					<p id="coordenadas">( 100 , 100 )</p>
+
+
+		<div>
+			Cortar [w:h:x:y] 
+			<div class="code">
+				ffmpeg -i [input] -vf "crop=w=100:h=90:x=100:y=100" [outputfile]<br><br>
+				ffmpeg -i [input] -vf "crop=200:90:100:100" [outputfile]
+			</div>
+
+			<hr>
+			<div class="exemplos">
+				<div id="cortarTamanho">
+					<div>
+						<p>90</p>
+						<p>200</p>
+						<p id="coordenadas">( 100 , 100 )</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div>
+			Tamanho [w:h] [ -1 para mater proporção]
+			<div class="code">
+				in_w = largura<br>
+				in_h = altura<br><br>
+
+				ffmpeg -i [input] -vf "scale=200:300" [output]<br>
+				ffmpeg -i [input] -vf "scale=200:-1" [output]<br>
+
+			</div>
+
+			<hr>		
+
+			<div class="cscale exemplos tolltip"><p>click</p><img src='imgs/coruja5.jpg' width="500">
+			</div>
+
+		</div>
+
+		<div>
+			Rotação 
+			<div class="code">
+				ffmpeg -i [input] -vf "transpose=1" [output]<Br><br>
+				ffmpeg -i [input] -vf "rotate=30*-1*PI/180" [output]
+			</div>
+			<hr>
+			<div>
+				<div class="exemplos">
+					<input type="range" id='ran' min=0 max=360 value=30><br><br>
+					<span>ffmpeg -i [input] -vf "rotate=<span id="ang">30</span>*-1*PI/180" [output]</span><br><br>
+					<img style="transition: 0.5s;" id=imrot src='imgs/coruja3.jpg' width="200">
 				</div>
 			</div>
 		</div>
 
-	</div>
-
-
-	<div>
-		Tamanho [w:h] [ -1 para mater proporção]
-		<div class="code">
-			in_w = largura<br>
-			in_h = altura<br><br>
-
-			ffmpeg -i [input] -vf "scale=200:300" [output]<br>
-			ffmpeg -i [input] -vf "scale=200:-1" [output]<br>
-
-		</div>
-
-		<hr>		
-
-		<div class="cscale exemplos tolltip"><p>click</p><img src='imgs/coruja5.jpg' width="500">
-		</div>
-
-	</div>
-
-	<div>
-		Rotação 
-		<div class="code">
-			ffmpeg -i [input] -vf "transpose=1" [output]<Br><br>
-			ffmpeg -i [input] -vf "rotate=30*-1*PI/180" [output]
-		</div>
-		<hr>
 		<div>
+			Flip horizontal
+			<div class="code">ffmpeg -i [input] -vf vflip [output]</div>
 			<div class="exemplos">
-				<input type="range" id='ran' min=0 max=360 value=30><br><br>
-				<span>ffmpeg -i [input] -vf "rotate=<span id="ang">30</span>*-1*PI/180" [output]</span><br><br>
-				<img style="transition: 0.5s;" id=imrot src='imgs/coruja3.jpg' width="200">
+				<div class="tolltip flip-horizontal" style="width: 200"><p>Click</p><img src='imgs/coruja1.jpg' width="200"></div><br>
 			</div>
-		</div>
-	</div>
-
-	<div>
-		Flip horizontal
-		<div class="code">ffmpeg -i [input] -vf vflip [output]</div>
-		<div class="exemplos">
-			<div class="tolltip flip-horizontal" style="width: 200"><p>Click</p><img src='imgs/coruja1.jpg' width="200"></div><br>
-		</div>
-		<hr>
-		Flip vertical 
-		<div class="code">ffmpeg -i [input] -vf vflip [output]</div>
-		<div class="exemplos">
-			<div class="tolltip flip-vertical" style="width: 200"><p>Click</p><img src='imgs/coruja2.jpg' width="200"></div><br>
-		</div>
-	</div>
-
-	<div>
-		Juntar vídeos em um só
-		<div class="code">
-			ffmpeg -f concat -i [input_list] [output]
-		</div>
-		<pre>
-			lista.txt
-
-			file 'video1.mp4'
-			file 'video2.mp4'
-			file 'video3.mp4'
-			...
-		</pre>
-	</div>
-
-	<div>
-		Convertendo pasta
-		<div class="code">
-			(for %i in (*.mp4) do ffmpeg -i %i %i.mp3 )
-		</div>
-	</div>
-
-	<div>
-		Transformar Fotos em vídeo [ %d = número | input em png é melhor ]
-		<div class="code">
-			ffmpeg -i [output] [%d input]
-		</div>
-		Transformar vídeo em sequência fotos
-		<div class="code">
-			ffmpeg -i [%d input] [output]
-		</div>
-
-		<div class="exemplos">
-			<input type="range" id="seqft" min=0 max=180 value=0 style="width: 300"><br><br>
-			<div id="seqf">
-				<img id=matriximg src="imgs/matrixirelia2.jpg">
+			<hr>
+			Flip vertical 
+			<div class="code">ffmpeg -i [input] -vf vflip [output]</div>
+			<div class="exemplos">
+				<div class="tolltip flip-vertical" style="width: 200"><p>Click</p><img src='imgs/coruja2.jpg' width="200"></div><br>
 			</div>
 		</div>
 
-		<input type="checkbox" class="comments">
 		<div>
-			<a href="imgs/matrixirelia2.jpg" target="blank">link da foto</a><br><Br>
-			Pega todas as fotos de uma pasta com os nomes sequenciados 1,2,3... e transforma em um vídeo único: 
+			Juntar vídeos em um só
+			<div class="code">
+				ffmpeg -f concat -i [input_list] [output]
+			</div>
+			<pre>
+				lista.txt
+
+				file 'video1.mp4'
+				file 'video2.mp4'
+				file 'video3.mp4'
+				...
+			</pre>
+
+			<input type="checkbox" class="comments">
+			<pre>
+				Você pode criar uma lista txt colocando o comando:
+
+				(for %i in (*.mp4) do @echo file '%i' ) > lista.txt
+
+				Onde tem *.mp4 podes substituir pelo nomeDaPasta/*.mp4
+			</pre>
+		</div>
+
+		<div>
+			Convertendo pasta
+			<div class="code">
+				(for %i in (*.mp4) do ffmpeg -i %i %i.mp3 )
+			</div>
+		</div>
+
+		<div>
+			Transformar Fotos em vídeo [ %d = número | input em png é melhor ]
+			<div class="code">
+				ffmpeg -i [output] [%d input]
+			</div>
+			Transformar vídeo em sequência fotos
+			<div class="code">
+				ffmpeg -i [%d input] [output]
+			</div>
+
+			<div class="exemplos">
+				<input type="range" id="seqft" min=0 max=180 value=0 style="width: 300"><br><br>
+				<div id="seqf">
+					<img id=matriximg src="imgs/matrixirelia2.jpg">
+				</div>
+			</div>
+
+			<input type="checkbox" class="comments">
+			<div>
+				<a href="imgs/matrixirelia2.jpg" target="blank">link da foto</a><br><Br>
+				Pega todas as fotos de uma pasta com os nomes sequenciados 1,2,3... e transforma em um vídeo único: 
+			</div>
+
+
+
+			<div class="code">
+				ffmpeg -framerate 60 -i [%d input] [output]
+			</div>
+		</div>
+
+
+		<div>
+			Copia frame do tempo [ output %d ]
+			<div class="code">
+				ffmpeg -i [input] -ss 00:00:37 -vframes 3 [%d output]
+			</div>
+
+
+
 		</div>
 
 
 
-		<div class="code">
-			ffmpeg -framerate 60 -i [%d input] [output]
-		</div>
+		<!-- (for %i in (pasta/*.mp4) do ffmpeg -i pasta/%i %i.mp3 ) -->
+		<!-- (for %i in (pasta/*.mp4) do ffmpeg -i pasta/%i %i.mp3 ) -->
+
 	</div>
 
 
-	<div>
-		Copia frame do tempo [ output %d ]
-		<div class="code">
-			ffmpeg -i [input] -ss 00:00:37 -vframes 3 [%d output]
-		</div>
-
-
-
-	</div>
-
-
-
-	<!-- (for %i in (pasta/*.mp4) do ffmpeg -i pasta/%i %i.mp3 ) -->
-	<!-- (for %i in (pasta/*.mp4) do ffmpeg -i pasta/%i %i.mp3 ) -->
-
-</div>
-
-
-<script>
+	<script>
 
 	// ok.innerHTML = com.innerText.replace(/\n/g,"<br>")
 
