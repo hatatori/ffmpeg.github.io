@@ -38,15 +38,6 @@ a{color: #ddd}
 	transition: 0.2s;
 }
 
-#geral > div:hover{
-	background-color: #151515;
-	transition: 0.2s;
-}
-
-
-
-
-
 .code{padding: 10; margin: 30;   
 	/*background: #312E2C*/
 }
@@ -201,48 +192,93 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 	left: 0;
 }
 
+.audio{
+	display: inline-flex;
+	overflow: hidden;
+	position: relative;
+	overflow: hidden;
+	height: 50;
+}
+
+.audio button{
+	width: 50;
+	height:40;
+	padding: 0;
+
+}
+
+.audio input[type='radio']{
+	width: 50;
+	height: 50;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.audio input[type='radio'] + *{
+	width: 0;
+	overflow: hidden;
+	transition: 0.5s;
+	height: 40;
+}
+
+.audio input[type='radio']:checked + *{
+	opacity: 1;
+	width: 300;
+	transition: 0.5s;
+	height: 40;
+}
+
+
+/*começo range*/
+
+
+/*fim range*/
+
 </style>
 
 <pre id='com' class="comentarios" contenteditable spellcheck="false" style="display: none">
 	recorte tempo
 
-	ffmpeg -i [inputfile] -ss 00:41 -t 00:10 -async 1 [outputfile]
+	ffmpeg -i [input] -ss 00:41 -t 00:10 -async 1 [outputfile]
 
 	mater qualidade
 
 	para mp4 ultiliza o -crf
 
-	ffmpeg -i [inputfile] -crf 10 [outputfile]
+	ffmpeg -i [input] -crf 10 [outputfile]
 
 	compilação de qualidade o quanto maior mais maneiro
 	para mp4 ultiliza o -avi
 
-	ffmpeg -i [inputfile] -q 23 [outputfile]
+	ffmpeg -i [input] -q 23 [outputfile]
 
 	qualidade e tempo
 
-	ffmpeg -i [inputfile] -ss 00:41 -t 00:10 -async 1 -crf 23 out3.mkv
+	ffmpeg -i [input] -ss 00:41 -t 00:10 -async 1 -crf 23 out3.mkv
 
 	qualidade de audio
 
-	ffmpeg -i [inputfile] -b:a 320k [outputfile]
+	ffmpeg -i [input] -b:a 320k [outputfile]
 
 	to target the video
 
-	ffmpeg -i [inputfile] -b:1000k [outputfile]
+	ffmpeg -i [input] -b:1000k [outputfile]
 
 	aumenta diminui volume
 
-	ffmpeg -i [inputfile] -va "volume=2" [outputfile]
-	ffmpeg -i [inputfile] -va "channelmap=0-0|0-1" [outputfile]
+	ffmpeg -i [input] -va "volume=2" [outputfile]
+	ffmpeg -i [input] -va "channelmap=0-0|0-1" [outputfile]
 
 	cotar
 
-	ffmpeg -i [inputfile] -vf "crop=w=640:h=480:x=100:y=100" [outputfile]
+	ffmpeg -i [input] -vf "crop=w=640:h=480:x=100:y=100" [outputfile]
 
 	tamanho scale
 
-	ffmpeg -i [inputfile] -vf "scale=w=200:h=-1" [outputfile]	
+	ffmpeg -i [input] -vf "scale=w=200:h=-1" [outputfile]	
 	ffmpeg -i out3.mkv -vf "scale=w=200:h=-1" outout.mp4
 
 
@@ -253,6 +289,8 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 
 	// pi em radiano
 	ffmpeg -i [input] -vf "rotate=30*PI/180" [output]
+
+
 
 </pre>
 
@@ -275,7 +313,7 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 		Recorte de tempo 
 
 		<div class="code">
-			ffmpeg -i [inputfile] -ss 5 -t 10 [outputfile]
+			ffmpeg -i [input] -ss 5 -t 10 [outputfile]
 		</div>
 		<input class="comments" type="checkbox">
 		<pre>
@@ -292,7 +330,7 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 		mp4 qualidade [ 0 = ótimo , 20 padrão , 100 = ruim]
 
 		<div class="code">
-			ffmpeg -i [inputfile] -crf 16 [outputfile]
+			ffmpeg -i [input] -crf 16 [outputfile]
 		</div>
 
 		<div class="exemplos">
@@ -311,22 +349,50 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 		Qualidade de áudio [ 320k , 256k , 128k ]
 
 		<div class="code">
-			ffmpeg -i [inputfile] -b:a 320k [outputfile]
+			ffmpeg -i [input] -b:a 320k [outputfile]
 		</div>
+
+
+
+		
+
+		<div class="exemplos">
+			<div class="audio" title="8.07 mb">
+				<button>320</button>
+				<input type="radio" name='a'>
+				<audio src='audios/red320.mp3' controls=""></audio>
+			</div>
+			<div class="audio" title="6.53 mb">
+				<button>256</button>
+				<input type="radio" name='a'>
+				<audio src='audios/red256.mp3' controls=""></audio>
+			</div>
+			<div class="audio" title="3.31 mb">
+				<button>128</button>
+				<input type="radio" name='a'>
+				<audio src='audios/red128.mp3' controls=""></audio>
+			</div>
+			<div class="audio">
+				<button>50</button title="1.29 mb">
+				<input type="radio" name='a'>
+				<audio src='audios/red50.mp3' controls=""></audio>
+			</div>
+		</div>
+
 	</div>
 
 	<div>
 		Vídeo bitrate
 		<div class="code">
-			ffmpeg -i [inputfile] -b:1000k [outputfile]
+			ffmpeg -i [input] -b:1000k [outputfile]
 		</div>
 	</div>
 
 	<div>
 		Volume + ou - / Canais
 		<div class="code">
-			ffmpeg -i [inputfile] -va "volume=2" [outputfile]<br><br>
-			ffmpeg -i [inputfile] -va "channelmap=0-0|0-1" [outputfile]
+			ffmpeg -i [input] -va "volume=2" [outputfile]<br><br>
+			ffmpeg -i [input] -va "channelmap=0-0|0-1" [outputfile]
 		</div>
 		<div class="exemplos">
 			<div class="tolltip"><p>Volume 1</p><img src="imgs/vol1.png"></div>
@@ -339,8 +405,8 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 	<div>
 		Cortar [w:h:x:y] 
 		<div class="code">
-			ffmpeg -i [inputfile] -vf "crop=w=100:h=90:x=100:y=100" [outputfile]<br><br>
-			ffmpeg -i [inputfile] -vf "crop=200:90:100:100" [outputfile]
+			ffmpeg -i [input] -vf "crop=w=100:h=90:x=100:y=100" [outputfile]<br><br>
+			ffmpeg -i [input] -vf "crop=200:90:100:100" [outputfile]
 		</div>
 
 		<hr>
@@ -438,7 +504,7 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 		</div>
 
 		<div class="exemplos">
-			<input type="range" id="seqft" min=0 max=180 value=7 style="width: 300"><br><br>
+			<input type="range" id="seqft" min=0 max=180 value=0 style="width: 300"><br><br>
 			<div id="seqf">
 				<img id=matriximg src="imgs/matrixirelia2.jpg">
 			</div>
@@ -541,6 +607,26 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 		matriximg.style.left = x*500*-1
 		matriximg.style.top = y*280*-1
 	}
+
+	audio = document.getElementsByClassName("audio")
+
+	for( i = 0 ; i < audio.length ; i++){
+
+		audio[i].onclick=function(e){
+			stopAll()
+			this.querySelector('audio').play()
+		}
+
+	}
+
+	function stopAll(){
+		for( i = 0 ; i < audio.length ; i++){
+			audio[i].querySelector('audio').pause()
+
+		}
+	}
+	
+
 
 	
 </script>
