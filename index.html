@@ -1,4 +1,10 @@
 <style>
+
+@font-face {
+  font-family: ubuntu;
+  src: url(fonts/Ubuntu-Regular.ttf);
+}
+
 *{
 	font-family: ubuntu;
 	outline: none;
@@ -622,16 +628,26 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 	for( i = 0 ; i < audio.length ; i++){
 
 		audio[i].onclick=function(e){
-			stopAll()
-			this.querySelector('audio').play()
-		}
 
+			
+			
+
+			stopAll()
+
+			this.querySelector('audio').play()	
+			this.querySelector('audio').currentTime = tempo
+		}
 	}
 
 	function stopAll(){
-		for( i = 0 ; i < audio.length ; i++){
-			audio[i].querySelector('audio').pause()
 
+		for( i = 0 ; i < audio.length ; i++){
+			aud = audio[i].querySelector('audio')
+			if(!aud.paused)
+				tempo = aud.currentTime
+			
+			
+			audio[i].querySelector('audio').pause()
 		}
 	}
 	
