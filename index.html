@@ -1,8 +1,8 @@
 <style>
 
 @font-face {
-  font-family: ubuntu;
-  src: url(fonts/Ubuntu-Regular.ttf);
+	font-family: ubuntu;
+	src: url(fonts/Ubuntu-Regular.ttf);
 }
 
 *{
@@ -302,6 +302,8 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 
 <div id="geral">
 
+
+
 	<div>
 		<p>Conversão simples</p>
 
@@ -545,14 +547,27 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 				ffmpeg -i [input] -ss 00:00:37 -vframes 3 [%d output]
 			</div>
 
-
-
 		</div>
 
 
 
 		<!-- (for %i in (pasta/*.mp4) do ffmpeg -i pasta/%i %i.mp3 ) -->
 		<!-- (for %i in (pasta/*.mp4) do ffmpeg -i pasta/%i %i.mp3 ) -->
+
+		<div>
+			<p>Velocidade do vídeo</p>
+
+			<div class="code">
+				ffmpeg -i [input] -filter:v "setpts=0.5*PTS" [output]
+			</div>
+			<input class="comments" type="checkbox">
+			<pre>
+				4 muito lento
+				2 lento
+				0.5 rápido
+				0.05 muito rápido
+			</pre>
+		</div>
 
 	</div>
 
