@@ -1,247 +1,247 @@
 <style>
 
-@font-face {
-	font-family: ubuntu;
-	src: url(fonts/Ubuntu-Regular.ttf);
-}
+	@font-face {
+		font-family: ubuntu;
+		src: url(fonts/Ubuntu-Regular.ttf);
+	}
 
-*{
-	font-family: ubuntu;
-	outline: none;
-	padding: 0;
-	margin: 0;
-}
+	*{
+		font-family: ubuntu;
+		outline: none;
+		padding: 0;
+		margin: 0;
+	}
 
-body{
-	background-color: #393634;
-	color: #6B6461;
-	font-size: 17;
-	outline: none;
-}
+	body{
+		background-color: #393634;
+		color: #6B6461;
+		font-size: 17;
+		outline: none;
+	}
 
-a{color: #ddd}
+	a{color: #ddd}
 
-.c1{color:orangered;}
-.c2{color:#80c0f0;}
-.c3{color:#99cc00;}
-.c4{color:yellow}
-.c6{color: #63636b;display: block;padding: 10}
-.comentarios{color:rgba(255,255,255,0.5);}
+	.c1{color:orangered;}
+	.c2{color:#80c0f0;}
+	.c3{color:#99cc00;}
+	.c4{color:yellow}
+	.c6{color: #63636b;display: block;padding: 10}
+	.comentarios{color:rgba(255,255,255,0.5);}
 
-#geral{
-	margin: 30 auto;
-	padding: 20;
-	width: 1200;
-	/*box-shadow: 0px 0px 10px #111;*/
-	/*background: #202020;*/
-}
+	#geral{
+		margin: 30 auto;
+		padding: 20;
+		width: 1200;
+		/*box-shadow: 0px 0px 10px #111;*/
+		/*background: #202020;*/
+	}
 
-#geral > div{
-	background-color: #202020;
-	padding: 10;
-	margin: 10;
-	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-	transition: 0.2s;
-}
+	#geral > div{
+		background-color: #202020;
+		padding: 10;
+		margin: 10;
+		box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+		transition: 0.2s;
+	}
 
-.code{padding: 10; margin: 30;   
-	/*background: #312E2C*/
-}
+	.code{padding: 10; margin: 30;   
+		/*background: #312E2C*/
+	}
 
-.amostra{
-	/*background-color: #111;*/
-	padding: 10;
-	
-}
+	.amostra{
+		/*background-color: #111;*/
+		padding: 10;
 
-.tolltip{display: inline-block;position: relative;}
+	}
 
-.tolltip p{
-	text-align: center;
-	position: absolute;
-	top: -23;
-	right:0;
-	left: 0;
-	width: 100;
-	margin:auto;
-	font-size: 12;
-	opacity: 0.0;
-	transition: 0.2s;
-	padding: 5;
-	border:none;
-	background-color: #3F3B37;color:white;
-}
-.tolltip:hover p{
-	opacity: 1;
-	transition: 0.2s;
-}
+	.tolltip{display: inline-block;position: relative;}
 
-.tolltip:active p{opacity: 0; transition: 0.05s;}
+	.tolltip p{
+		text-align: center;
+		position: absolute;
+		top: -23;
+		right:0;
+		left: 0;
+		width: 100;
+		margin:auto;
+		font-size: 12;
+		opacity: 0.0;
+		transition: 0.2s;
+		padding: 5;
+		border:none;
+		background-color: #3F3B37;color:white;
+	}
+	.tolltip:hover p{
+		opacity: 1;
+		transition: 0.2s;
+	}
 
-button{padding: 10;border:none;background-color: #3F3B37;color:white;}
+	.tolltip:active p{opacity: 0; transition: 0.05s;}
 
-.bt{padding: 10;border:none;background-color: #3F3B37;color:white;}
+	button{padding: 10;border:none;background-color: #3F3B37;color:white;}
 
-
-/*.exemplos{background-color: #312E2C; margin:30 0; ;padding: 10;text-align: center;}*/
-.exemplos{
-	display: block;
-	margin: 10;
-
-}
+	.bt{padding: 10;border:none;background-color: #3F3B37;color:white;}
 
 
-/*efeitos*/
+	/*.exemplos{background-color: #312E2C; margin:30 0; ;padding: 10;text-align: center;}*/
+	.exemplos{
+		display: block;
+		margin: 10;
 
-#cortarTamanho{
-	margin: auto;
-	width: 500;
-	height: 342;
-	background:url(imgs/coruja4.jpg);
-	position: relative;
-	/*background-size: 100%;*/
-	overflow: hidden;
-}
-
-#cortarTamanho div:nth-child(1){
-	width: 200;
-	height: 90;
-	left: 100;
-	top: 100;
-	background-color: rgba(0,0,0,0.5);
-	border:2px solid red;
-	position: absolute;
-}
-
-#cortarTamanho div:hover{cursor: grab}
+	}
 
 
+	/*efeitos*/
 
-#cortarTamanho div:nth-child(1)::before{
-	content: '';
-	width: 10;
-	height: 10;
-	border-radius: 10px;
-	background: yellow;
-	position: absolute;
-	left: -5;
-	top: -5
-}
+	#cortarTamanho{
+		margin: auto;
+		width: 500;
+		height: 342;
+		background:url(imgs/coruja4.jpg);
+		position: relative;
+		/*background-size: 100%;*/
+		overflow: hidden;
+	}
 
-#cortarTamanho div p:nth-child(1){position: absolute;left:-3;top: 40;transform: rotate(90deg);width: 30;color:white;}
-#cortarTamanho div p:nth-child(2){position: absolute;left:80;top: 0;width: 30;color:white;}
+	#cortarTamanho div:nth-child(1){
+		width: 200;
+		height: 90;
+		left: 100;
+		top: 100;
+		background-color: rgba(0,0,0,0.5);
+		border:2px solid red;
+		position: absolute;
+	}
 
-#cortarTamanho div p:nth-child(3){
-	color: white;
-	margin: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 100;
-	height: 20;
-
-}
-
-.flip-horizontal{transition: 0.5s}
-.flip-horizontal:active{ transform: scaleX(-1); transition: 0.5s; }
-
-.flip-vertical{transition: 0.5s}
-.flip-vertical:active{ transform: scaleY(-1); transition: 0.5s; }
-
-.cscale{width: 300}
-.cscale img{width: 300; transition:0.5s;}
-.cscale:active img{width: 200;transition: 0.5s}
-
-hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1px}
-
-.comments{margin: 10;font-size: 13;overflow:0 }
-
-.comments + *{
-
-	max-height: 0;
-	transition: 0.2s;
-	overflow:hidden;
-	margin: 10;
-	font-size: 15;
-	color:#908782
+	#cortarTamanho div:hover{cursor: grab}
 
 
-}
 
-.comments:checked + *{
-	transition: 0.2s;
-	overflow: hidden;
-	margin: 10;
-	max-height: 1000%;
-	max-height: 100%;
-	padding: 20 50;
-}
+	#cortarTamanho div:nth-child(1)::before{
+		content: '';
+		width: 10;
+		height: 10;
+		border-radius: 10px;
+		background: yellow;
+		position: absolute;
+		left: -5;
+		top: -5
+	}
 
-.comments::before{
-	content: 'Comentários';
-	background-color: #222;
-	padding: 10;
-	color: #777;
-}
+	#cortarTamanho div p:nth-child(1){position: absolute;left:-3;top: 40;transform: rotate(90deg);width: 30;color:white;}
+	#cortarTamanho div p:nth-child(2){position: absolute;left:80;top: 0;width: 30;color:white;}
 
-.comments:active::before{background-color: white;transition: 0.2s}
-#seqf *{padding: 0;margin: 0}
+	#cortarTamanho div p:nth-child(3){
+		color: white;
+		margin: auto;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100;
+		height: 20;
 
-#seqf{width: 500;height: 280;overflow:hidden;position: relative;}
-#seqf > img{
-	position: absolute;
-	width: auto;
-	height: auto;
-	top: 0;
-	left: 0;
-}
+	}
 
-.audio{
-	display: inline-flex;
-	overflow: hidden;
-	position: relative;
-	overflow: hidden;
-	height: 50;
-}
+	.flip-horizontal{transition: 0.5s}
+	.flip-horizontal:active{ transform: scaleX(-1); transition: 0.5s; }
 
-.audio button{
-	width: 50;
-	height:40;
-	padding: 0;
+	.flip-vertical{transition: 0.5s}
+	.flip-vertical:active{ transform: scaleY(-1); transition: 0.5s; }
 
-}
+	.cscale{width: 300}
+	.cscale img{width: 300; transition:0.5s;}
+	.cscale:active img{width: 200;transition: 0.5s}
 
-.audio input[type='radio']{
-	width: 50;
-	height: 50;
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	overflow: hidden;
-}
+	hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1px}
 
-.audio input[type='radio'] + *{
-	width: 0;
-	overflow: hidden;
-	transition: 0.5s;
-	height: 40;
-}
+	.comments{margin: 10;font-size: 13;overflow:0 }
 
-.audio input[type='radio']:checked + *{
-	opacity: 1;
-	width: 300;
-	transition: 0.5s;
-	height: 40;
-}
+	.comments + *{
+
+		max-height: 0;
+		transition: 0.2s;
+		overflow:hidden;
+		margin: 10;
+		font-size: 15;
+		color:#908782
 
 
-/*começo range*/
+	}
+
+	.comments:checked + *{
+		transition: 0.2s;
+		overflow: hidden;
+		margin: 10;
+		max-height: 1000%;
+		max-height: 100%;
+		padding: 20 50;
+	}
+
+	.comments::before{
+		content: 'Comentários';
+		background-color: #222;
+		padding: 10;
+		color: #777;
+	}
+
+	.comments:active::before{background-color: white;transition: 0.2s}
+	#seqf *{padding: 0;margin: 0}
+
+	#seqf{width: 500;height: 280;overflow:hidden;position: relative;}
+	#seqf > img{
+		position: absolute;
+		width: auto;
+		height: auto;
+		top: 0;
+		left: 0;
+	}
+
+	.audio{
+		display: inline-flex;
+		overflow: hidden;
+		position: relative;
+		overflow: hidden;
+		height: 50;
+	}
+
+	.audio button{
+		width: 50;
+		height:40;
+		padding: 0;
+
+	}
+
+	.audio input[type='radio']{
+		width: 50;
+		height: 50;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		overflow: hidden;
+	}
+
+	.audio input[type='radio'] + *{
+		width: 0;
+		overflow: hidden;
+		transition: 0.5s;
+		height: 40;
+	}
+
+	.audio input[type='radio']:checked + *{
+		opacity: 1;
+		width: 300;
+		transition: 0.5s;
+		height: 40;
+	}
 
 
-/*fim range*/
+	/*começo range*/
+
+
+	/*fim range*/
 
 </style>
 
@@ -566,6 +566,24 @@ hr{border:none;border-bottom:1px solid #555;margin: 50;overflow:hidden;height: 1
 				2 lento
 				0.5 rápido
 				0.05 muito rápido
+			</pre>
+		</div>
+
+		<div>
+			<p>Matriz de imagem</p>
+
+			<div class="code">
+				ffmpeg -i [input] -vsync vfr -vf "select=isnan(prev_selected_t)+gte(t-prev_selected_t\,5),scale=160:90,tile=5x5" -qscale:v 3 [output %03d]
+			</div>
+			<div class="exemplos">
+				<img src="imgs/thumb.jpg" width="500">
+			</div>
+			<input class="comments" type="checkbox">
+			<pre>
+5 = Salva frames a cada 5 segundos
+5x5 = número de linha e coluna
+160:90 = tamanho de cada imagem da matriz
+3 = qualidade da imagem
 			</pre>
 		</div>
 
