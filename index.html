@@ -587,6 +587,30 @@
 			</pre>
 		</div>
 
+		<div>
+			<p>Gravar tela do pc</p>
+
+			<div class="code">
+				ffmpeg -f gdigrab -framerate 10 -i desktop [output]
+			</div>
+			<input class="comments" type="checkbox">
+			<pre>
+				Tudo
+			</pre>
+
+
+			<div class="code">
+				ffmpeg -f gdigrab -framerate ntsc -offset_x 10 -offset_y 20 -video_size 640x480 \
+-show_region 1 -i desktop [output]
+			</div>
+			<input class="comments" type="checkbox">
+			<pre>
+				Gravar por região
+			</pre>
+		</div>
+
+
+
 	</div>
 
 
