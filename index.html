@@ -591,29 +591,32 @@
 			<p>Gravar tela do pc</p>
 
 			<div class="code">
+				Gravar tela do PC<br><br>
 				ffmpeg -f gdigrab -framerate 10 -i desktop [output]
 			</div>
-			<input class="comments" type="checkbox">
-			<pre>
-				Tudo
-			</pre>
-			
+						
 			<div class="code">
+				Gravar somente uma determinada janela<br><br>
 				ffmpeg -f gdigrab -framerate 25 -i title=Calculator [output]
 			</div>
-			<input class="comments" type="checkbox">
-			<pre>
-				Gravar somente uma determinada janela
-			</pre>
+			
 
 
 			<div class="code">
+				Gravar por região<br><br>
 				ffmpeg -f gdigrab -framerate ntsc -offset_x 10 -offset_y 20 -video_size 640x480 -show_region 1 -i desktop [output]
 			</div>
-			<input class="comments" type="checkbox">
-			<pre>
-				Gravar por região
-			</pre>
+			
+			
+
+			<div class="code">
+				Lista de dispositivos para encontrar o microfone<br><br>
+				ffmpeg -list_devices true -f dshow -i dummy<br><br>
+				<br><br>
+				Coloca o valor do microfone no campo azul<br><br>
+				ffmpeg -f gdigrab -framerate 60 -i desktop -f dshow -i audio="Microfone (HD Webcam C270)" [output]
+			</div>
+
 		</div>
 			
 			<div>
