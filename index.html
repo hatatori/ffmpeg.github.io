@@ -594,7 +594,7 @@
 				Gravar tela do PC<br><br>
 				ffmpeg -f gdigrab -framerate 10 -i desktop [output]
 			</div>
-						
+
 			<div class="code">
 				Gravar somente uma determinada janela<br><br>
 				ffmpeg -f gdigrab -framerate 25 -i title=Calculator [output]
@@ -618,22 +618,37 @@
 			</div>
 
 		</div>
-			
-			<div>
-				Interpolação
-				<div class="code">
+
+		<div>
+			Interpolação
+			<div class="code">
 				ffmpeg -i [input] -vf "minterpolate='fps=60'" [output]
-				</div>
 			</div>
+		</div>
 
-			<div>
-				whatsapp
-				<div class="code">
+		<div>
+			whatsapp
+			<div class="code">
 				ffmpeg -i [input] -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p [output]
-				</div>
+			</div>
+		</div>
+
+		<div>
+			whatsapp
+			<div class="code">
+				ffmpeg -i [input1] -i [input2] -c:v copy -c:a aac [output]
 			</div>
 
-			
+			<input class="comments" type="checkbox">
+			<pre>
+				[input1] = video
+				[input2] = audio
+			</pre>
+		</div>
+
+
+
+
 
 
 	</div>
